@@ -9,6 +9,7 @@ const slugs = ["momos", "soups-mains", "sizzlers", "pizzas", "pasta-breads", "wa
 const emojiByCategory: Record<string, string> = { "Momos": "🥟", "Soups & Mains": "🍜", "Sizzlers": "🔥", "Pizzas": "🍕", "Pasta & Breads": "🍝", "Waffles": "🧇", "Street Food": "🥪", "Chaat & North Indian": "🥘", "Drinks & Bubble Tea": "🧋" };
 const accentByCategory: Record<string, string> = { "Momos": "rose", "Soups & Mains": "sage", "Sizzlers": "orange", "Pizzas": "tomato", "Pasta & Breads": "yellow", "Waffles": "pink", "Street Food": "green", "Chaat & North Indian": "purple", "Drinks & Bubble Tea": "blue" };
 type CartLine = { item: MenuItem; quantity: number; preparation: string };
+const apiBase = process.env.NEXT_PUBLIC_API_URL ?? (process.env.NODE_ENV === "development" ? "http://localhost:4000/api" : "");
 
 export function MenuExperience() {
   const [active, setActive] = useState(categories[0]);
@@ -22,10 +23,11 @@ export function MenuExperience() {
   const [orderState, setOrderState] = useState<"idle" | "sending" | "done">("idle");
 
   useEffect(() => {
-    const api = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000/api";
-    fetch(`${api}/menu`).then(r => r.ok ? r.json() : null).then((rows: MenuItem[] | null) => {
-      if (Array.isArray(rows) && rows.length) setItems(rows);
-    }).catch(() => undefined);
+    if (apiBase) {
+      fetch(`${apiBase}/menu`).then(r => r.ok ? r.json() : null).then((rows: MenuItem[] | null) => {
+        if (Array.isArray(rows) && rows.length) setItems(rows);
+      }).catch(() => undefined);
+    }
     const hash = window.location.hash.replace("#", "");
     const idx = slugs.indexOf(hash);
     if (idx >= 0) { setActive(categories[idx]); window.setTimeout(() => document.getElementById(hash)?.scrollIntoView({ block: "nearest", inline: "center" }), 0); }
@@ -43,11 +45,12 @@ export function MenuExperience() {
   const money = (price: number) => `₹${price.toLocaleString("en-IN")}`;
 
   async function submitOrder(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault(); setOrderState("sending"); setMessage("");
+    event.preventDefault();
+    if (!apiBase) { setMessage("Online ordering is not available on this site yet. Please call us at 080919 52445."); return; }
+    setOrderState("sending"); setMessage("");
     const form = new FormData(event.currentTarget);
-    const api = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000/api";
     try {
-      const response = await fetch(`${api}/orders`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ customerName: form.get("name"), phone: form.get("phone"), fulfillment: form.get("fulfillment"), notes: form.get("notes"), items: cart.map(({ item, quantity, preparation }) => ({ itemId: item.id, quantity, preparation })) }) });
+      const response = await fetch(`${apiBase}/orders`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ customerName: form.get("name"), phone: form.get("phone"), fulfillment: form.get("fulfillment"), notes: form.get("notes"), items: cart.map(({ item, quantity, preparation }) => ({ itemId: item.id, quantity, preparation })) }) });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error ?? "Please try again.");
       setOrderState("done"); setCart([]); setMessage(`Order placed. Your reference is ${String(data.id).slice(0, 8)}.`);

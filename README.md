@@ -14,6 +14,12 @@ Requirements: Node.js 18+, PostgreSQL 14+, and Python 3.10+ for the recommendati
 
 The menu page starts with the bundled menu data and replaces it with live API data when the API is available. Order placement requires the API and seeded database. The recommendation service keeps a small fallback menu available during database outages.
 
+## Deploy to GitHub Pages
+
+The `main` branch is configured to publish a static export to GitHub Pages using `.github/workflows/deploy.yml`. In the repository, open **Settings → Pages** and set the build source to **GitHub Actions**. After the workflow completes, the site will be available at `https://pranjalthakur01.github.io/satvikfoodcourt/`.
+
+GitHub Pages only hosts static files. The menu is bundled with the site, but online order submission and live database-backed menu updates require deploying the Express/PostgreSQL API separately. Once hosted, add a repository Actions variable named `NEXT_PUBLIC_API_URL` with the public API URL; the Pages workflow will use it during builds.
+
 ## Endpoints
 
 - `GET /api/health`
