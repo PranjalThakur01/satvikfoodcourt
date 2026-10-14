@@ -1,0 +1,62 @@
+export type MenuItem = {
+  id: string; name: string; category: string; price: number; description: string;
+  tags: string[]; vegetarian: boolean; badge?: string;
+};
+
+export const categories = ["Momos", "Soups & Mains", "Sizzlers", "Pizzas", "Pasta & Breads", "Waffles", "Street Food", "Chaat & North Indian", "Drinks & Bubble Tea"];
+
+// Prices are indicative menu prices in INR and can be changed centrally when the restaurant confirms its menu.
+export const menuItems: MenuItem[] = [
+  { id: "momo-veggie", name: "Veggie Momos", category: "Momos", price: 119, description: "Garden vegetables, ginger and house dipping sauce. Steam, fry or pan fry.", tags: ["popular", "savory"], vegetarian: true },
+  { id: "momo-paneer", name: "Paneer Momos", category: "Momos", price: 149, description: "Soft paneer filling with a gentle chilli kick. Steam, fry or pan fry.", tags: ["spicy", "savory"], vegetarian: true, badge: "Guest favourite" },
+  { id: "momo-corn", name: "Corn & Cheese Momos", category: "Momos", price: 159, description: "Sweet corn, melty cheese and pepper. Steam, fry or pan fry.", tags: ["cheesy", "savory"], vegetarian: true },
+  { id: "momo-combo-rice", name: "Momo + Fried Rice Combo", category: "Momos", price: 229, description: "Steamed momos served with wok-tossed fried rice.", tags: ["combo", "filling"], vegetarian: true },
+  { id: "momo-combo-noodles", name: "Momo + Noodles Combo", category: "Momos", price: 229, description: "Your favourite momos with Hakka noodles.", tags: ["combo", "filling"], vegetarian: true },
+  { id: "soup-manchow", name: "Veg Manchow Soup", category: "Soups & Mains", price: 119, description: "A warming Indo-Chinese classic with crisp noodles.", tags: ["spicy", "soup"], vegetarian: true },
+  { id: "soup-lemon", name: "Lemon Coriander Soup", category: "Soups & Mains", price: 119, description: "Bright citrus, fresh coriander and garden vegetables.", tags: ["fresh", "soup"], vegetarian: true },
+  { id: "spring-rolls", name: "Spring Rolls", category: "Soups & Mains", price: 159, description: "Crisp rolls filled with seasoned vegetables.", tags: ["crunchy", "starter"], vegetarian: true },
+  { id: "chilli-paneer", name: "Chilli Paneer", category: "Soups & Mains", price: 229, description: "Paneer, peppers and spring onion in a lively sauce.", tags: ["spicy", "paneer"], vegetarian: true },
+  { id: "hakka-noodles", name: "Hakka Noodles", category: "Soups & Mains", price: 189, description: "Wok-tossed noodles with crunchy seasonal vegetables.", tags: ["savory", "noodles"], vegetarian: true },
+  { id: "gravy-manchurian", name: "Gravy Manchurian", category: "Soups & Mains", price: 219, description: "Vegetable dumplings in a rich, tangy gravy.", tags: ["spicy", "gravy"], vegetarian: true },
+  { id: "sizzler-veg", name: "Veg Manchurian Sizzler", category: "Sizzlers", price: 329, description: "A sizzling platter with veg Manchurian and sides.", tags: ["spicy", "signature"], vegetarian: true },
+  { id: "sizzler-paneer", name: "Paneer Manchurian Sizzler", category: "Sizzlers", price: 359, description: "Paneer Manchurian served hot with hearty sides.", tags: ["spicy", "paneer"], vegetarian: true },
+  { id: "sizzler-peri", name: "Peri Peri Paneer Sizzler", category: "Sizzlers", price: 379, description: "Smoky peri peri paneer on a sizzling hot plate.", tags: ["spicy", "paneer", "signature"], vegetarian: true, badge: "A little heat" },
+  { id: "pizza-margherita", name: "Margherita", category: "Pizzas", price: 229, description: "Classic tomato, mozzarella and fragrant basil.", tags: ["pizza", "classic"], vegetarian: true },
+  { id: "pizza-tomatina", name: "La Tomatina", category: "Pizzas", price: 259, description: "A tomato-forward favourite with herbs and cheese.", tags: ["pizza", "tangy"], vegetarian: true },
+  { id: "pizza-corny", name: "Corny Treat", category: "Pizzas", price: 279, description: "Sweet corn, mozzarella and a buttery finish.", tags: ["pizza", "cheesy"], vegetarian: true },
+  { id: "pizza-paradise", name: "Veggie Paradise", category: "Pizzas", price: 299, description: "A generous garden of colourful vegetables.", tags: ["pizza", "fresh"], vegetarian: true },
+  { id: "pizza-paneer", name: "Paneer Picasso", category: "Pizzas", price: 329, description: "Paneer tikka, peppers and a creamy cheese blend.", tags: ["pizza", "paneer"], vegetarian: true },
+  { id: "pizza-farmhouse", name: "Farm House", category: "Pizzas", price: 329, description: "Mushroom, capsicum, onion and tomato on a crisp base.", tags: ["pizza", "fresh"], vegetarian: true, badge: "Most loved" },
+  { id: "pasta-white", name: "White Sauce Pasta", category: "Pasta & Breads", price: 239, description: "Silky, creamy sauce with herbs and vegetables.", tags: ["creamy", "comfort"], vegetarian: true },
+  { id: "pasta-red", name: "Red Sauce Pasta", category: "Pasta & Breads", price: 229, description: "Slow-style tomato sauce with a hint of chilli.", tags: ["spicy", "tomato"], vegetarian: true },
+  { id: "pasta-mixed", name: "Mixed Sauce Pasta", category: "Pasta & Breads", price: 249, description: "The best of creamy white and tangy red sauce.", tags: ["creamy", "comfort"], vegetarian: true },
+  { id: "mac-cheese", name: "Mac & Cheese", category: "Pasta & Breads", price: 249, description: "Pasta shells coated in a comforting cheese sauce.", tags: ["cheesy", "comfort"], vegetarian: true },
+  { id: "garlic-sticks", name: "Garlic Bread Sticks", category: "Pasta & Breads", price: 139, description: "Golden baked bread with garlic butter and herbs.", tags: ["garlic", "side"], vegetarian: true },
+  { id: "garlic-stuffed", name: "Stuffed Garlic Bread", category: "Pasta & Breads", price: 189, description: "Crisp garlic bread stuffed with cheese and corn.", tags: ["cheesy", "side"], vegetarian: true },
+  { id: "waffle-nutella", name: "Naked Nutella", category: "Waffles", price: 189, description: "Warm waffle draped in everybody's favourite hazelnut spread.", tags: ["sweet", "chocolate"], vegetarian: true },
+  { id: "waffle-walnut", name: "Wacky Walnut", category: "Waffles", price: 219, description: "Toasted walnut crunch, chocolate and warm waffle.", tags: ["sweet", "chocolate", "nutty"], vegetarian: true },
+  { id: "waffle-banana", name: "Banana Caramel", category: "Waffles", price: 219, description: "Fresh banana and buttery caramel over a crisp waffle.", tags: ["sweet", "fruit"], vegetarian: true },
+  { id: "waffle-ferraro", name: "Ferraro Bomb", category: "Waffles", price: 249, description: "A chocolate-hazelnut waffle made for a treat-yourself moment.", tags: ["sweet", "chocolate"], vegetarian: true, badge: "Indulgent" },
+  { id: "waffle-oreo", name: "Old School Oreo", category: "Waffles", price: 229, description: "Cookies, cream and a nostalgic chocolate crunch.", tags: ["sweet", "chocolate"], vegetarian: true },
+  { id: "street-pav", name: "Pav Bhaji", category: "Street Food", price: 169, description: "Mumbai-style spiced vegetable bhaji with buttered pav.", tags: ["spicy", "street food"], vegetarian: true },
+  { id: "street-vada", name: "Vada Pav", category: "Street Food", price: 69, description: "The beloved Mumbai potato fritter in a soft pav.", tags: ["spicy", "street food"], vegetarian: true },
+  { id: "street-sandwich", name: "Grill Bombay Sandwich", category: "Street Food", price: 149, description: "Grilled layers of spiced potato, vegetables and chutney.", tags: ["street food", "crunchy"], vegetarian: true },
+  { id: "street-dabeli", name: "Dabeli", category: "Street Food", price: 89, description: "Sweet-spicy Kutch potato filling with peanuts and sev.", tags: ["sweet", "spicy", "street food"], vegetarian: true },
+  { id: "chaat-golgappe", name: "Golgappe", category: "Chaat & North Indian", price: 79, description: "Crisp puris with spiced water and classic fillings.", tags: ["tangy", "street food"], vegetarian: true },
+  { id: "chaat-raj", name: "Raj Kachori", category: "Chaat & North Indian", price: 149, description: "A generous kachori filled with chutneys, curd and crunch.", tags: ["tangy", "crunchy"], vegetarian: true },
+  { id: "chaat-tikki", name: "Aloo Tikki", category: "Chaat & North Indian", price: 119, description: "Golden potato patties topped with chutney and curd.", tags: ["crunchy", "street food"], vegetarian: true },
+  { id: "north-choley-bhature", name: "Choley Bhature", category: "Chaat & North Indian", price: 189, description: "Punjabi choley with fluffy, freshly fried bhature.", tags: ["spicy", "filling"], vegetarian: true },
+  { id: "north-choley-kulcha", name: "Choley Kulcha", category: "Chaat & North Indian", price: 169, description: "Slow-spiced choley with soft kulcha.", tags: ["spicy", "filling"], vegetarian: true },
+  { id: "north-samosa", name: "Samosa", category: "Chaat & North Indian", price: 35, description: "Flaky pastry with spiced potato and peas.", tags: ["crunchy", "snack"], vegetarian: true },
+  { id: "drink-mango-tea", name: "Mango Fruit Tea", category: "Drinks & Bubble Tea", price: 149, description: "Bright fruit tea with a tropical mango finish.", tags: ["beverage", "sweet", "fruit tea"], vegetarian: true },
+  { id: "drink-peach-tea", name: "Peach Fruit Tea", category: "Drinks & Bubble Tea", price: 149, description: "Light and fragrant peach tea, served chilled.", tags: ["beverage", "sweet", "fruit tea"], vegetarian: true },
+  { id: "drink-passion-tea", name: "Passion Fruit Tea", category: "Drinks & Bubble Tea", price: 159, description: "A tangy, tropical fruit tea with a lively finish.", tags: ["beverage", "fruit tea"], vegetarian: true },
+  { id: "drink-strawberry-tea", name: "Strawberry Milk Tea", category: "Drinks & Bubble Tea", price: 169, description: "Creamy milk tea with a sweet strawberry note.", tags: ["beverage", "sweet", "milk tea"], vegetarian: true },
+  { id: "drink-oreo-tea", name: "Oreo Cocoa Milk Tea", category: "Drinks & Bubble Tea", price: 189, description: "Cocoa, creamy tea and cookie crumble.", tags: ["beverage", "sweet", "milk tea"], vegetarian: true },
+  { id: "drink-vietnamese", name: "Vietnamese Coffee Milk Tea", category: "Drinks & Bubble Tea", price: 189, description: "Bold coffee meets smooth, sweet milk tea.", tags: ["beverage", "coffee", "milk tea"], vegetarian: true },
+  { id: "drink-boba", name: "Popping Bobas", category: "Drinks & Bubble Tea", price: 169, description: "Add a burst of fruity popping boba to your drink.", tags: ["beverage", "sweet", "boba"], vegetarian: true },
+  { id: "drink-shake", name: "Classic Shake", category: "Drinks & Bubble Tea", price: 159, description: "A thick, chilled shake. Ask us for today's flavours.", tags: ["beverage", "sweet", "shake"], vegetarian: true },
+  { id: "drink-lassi", name: "Lassi", category: "Drinks & Bubble Tea", price: 119, description: "A cool, creamy yoghurt drink, sweet or salted.", tags: ["beverage", "lassi"], vegetarian: true },
+  { id: "drink-cold-coffee", name: "Cold Coffee", category: "Drinks & Bubble Tea", price: 149, description: "Chilled coffee blended smooth and served over ice.", tags: ["beverage", "coffee"], vegetarian: true },
+  { id: "drink-soft", name: "Soft Drinks", category: "Drinks & Bubble Tea", price: 49, description: "A selection of standard chilled soft drinks.", tags: ["beverage", "refreshing"], vegetarian: true }
+];
