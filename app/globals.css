@@ -34,6 +34,11 @@
 .footer-script{font-size:30px}.footer-brand p{font-size:11px}.footer-label{font-size:9px}.footer-col p,.footer-col a{font-size:10px}.footer-bottom{font-size:9px}.prep-choice{font-size:10px}.prep-choice select{font-size:11px}
 }
 
+.footer-developer-credit{font-size:10px;color:#aab5a9;text-align:center}
+.footer-developer-credit a{color:#e4e8dc;transition:color .2s,text-decoration-color .2s}
+.footer-developer-credit a:hover{color:#f1d47e;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:620px){.footer-bottom{flex-direction:column;align-items:center;gap:10px;text-align:center}.footer-bottom span:last-child{text-align:center}}
+
 .hero-copy{position:relative;isolation:isolate;padding:clamp(22px,2.2vw,32px);border:1px solid rgba(255,255,255,.78);border-radius:16px;background:linear-gradient(135deg,rgba(255,255,255,.62),rgba(249,249,242,.36));box-shadow:0 20px 55px rgba(38,48,35,.12),inset 0 1px rgba(255,255,255,.85);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2)}
 .hero-copy::before{content:"";position:absolute;inset:-14px;z-index:-1;pointer-events:none;border-radius:inherit;background:radial-gradient(ellipse at 15% 20%,rgba(233,237,222,.72),transparent 48%),radial-gradient(ellipse at 85% 85%,rgba(233,189,104,.2),transparent 45%);filter:blur(26px)}
 .welcome-band{padding:52px clamp(22px,9vw,150px);grid-template-columns:minmax(260px,.9fr) minmax(0,1.1fr);gap:clamp(26px,4vw,60px);align-items:stretch}
