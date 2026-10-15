@@ -9,7 +9,7 @@ function Pizza() {
   const ref = useRef<THREE.Group>(null);
   const { pointer } = useThree();
   // This supplied .glb file is actually a PNG image, so load it as a texture.
-  const pizzaTexture = useTexture("/realistic_pizza.glb");
+  const pizzaTexture = useTexture(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/realistic_pizza.glb`);
   pizzaTexture.colorSpace = THREE.SRGBColorSpace;
   useFrame((state, delta) => {
     if (!ref.current) return;
